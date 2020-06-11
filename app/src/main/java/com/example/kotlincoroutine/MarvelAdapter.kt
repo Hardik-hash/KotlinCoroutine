@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class MarvelAdapter(val context: Context) : RecyclerView.Adapter<MarvelAdapter.DataViewHolder>() {
@@ -29,6 +30,7 @@ class MarvelAdapter(val context: Context) : RecyclerView.Adapter<MarvelAdapter.D
 
         val data = dataList[position]
         val name = holder.itemView.name
+        val image=holder.itemView.img
         val realName = holder.itemView.realName
         val team = holder.itemView.team
         val firstappearance = holder.itemView.firstappearance
@@ -36,6 +38,7 @@ class MarvelAdapter(val context: Context) : RecyclerView.Adapter<MarvelAdapter.D
         val publisher=holder.itemView.publisher
         val imageurl=holder.itemView.imageurl
         val bio=holder.itemView.bio
+
 
         name.text = data.name
         realName.text = data.realname
@@ -45,6 +48,9 @@ class MarvelAdapter(val context: Context) : RecyclerView.Adapter<MarvelAdapter.D
         publisher.text=data.publisher
         imageurl.text=data.imageurl
         bio.text=data.bio
+
+       // Glide.with(context).load(imageurl).into(image)
+        Glide.with(context).load(data.imageurl).into(image)
 
     }
 
